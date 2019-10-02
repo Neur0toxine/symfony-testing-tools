@@ -1,6 +1,6 @@
 # Symfony testing tools
 
-The library contains improved classes of WebTestCase and Container for convenient testing.
+The library contains improved classes of WebTestCase and Container for convenient testing. Forked from [intaro/symfony-testing-tools](https://github.com/intaro/symfony-testing-tools) with required changes to use this library with newer versions of Symfony.
 
 ## Features
 

@@ -95,7 +95,9 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
-     * @return ContainerInterface|MockableContainer
+     * @param bool $newClient
+     *
+     * @return ContainerInterface|MockableContainer|null
      */
     protected static function getContainer($newClient = false)
     {
@@ -103,7 +105,10 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
+     * @param bool $newClient
+     *
      * @return EntityManagerInterface
+     * @throws \Exception
      */
     protected static function getEntityManager($newClient = false)
     {
@@ -152,7 +157,7 @@ abstract class WebTestCase extends BaseWebTestCase
 
     /**
      * @param Response $response
-     * @param integer  $expectedCode
+     * @param int      $expectedCode
      * @param string   $message
      * @param string   $type
      */
@@ -256,11 +261,12 @@ abstract class WebTestCase extends BaseWebTestCase
     /**
      * Call protected/private method of a class.
      *
-     * @param object &$object    Instantiated object that we will run method on.
-     * @param string $methodName Method name to call
-     * @param array  $parameters Array of parameters to pass into method.
+     * @param object &$object     Instantiated object that we will run method on.
+     * @param string  $methodName Method name to call
+     * @param array   $parameters Array of parameters to pass into method.
      *
      * @return mixed Method return.
+     * @throws \ReflectionException
      */
     protected function invokeMethod(&$object, $methodName, array $parameters = array())
     {

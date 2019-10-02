@@ -46,9 +46,10 @@ class MockableContainer extends Container
 
     /**
      * @param string  $id
-     * @param integer $invalidBehavior
+     * @param int     $invalidBehavior
      *
      * @return object
+     * @throws \Exception
      */
     public function get($id, $invalidBehavior = self::EXCEPTION_ON_INVALID_REFERENCE)
     {
@@ -62,7 +63,7 @@ class MockableContainer extends Container
     /**
      * @param string $id
      *
-     * @return boolean
+     * @return bool
      */
     public function has($id)
     {
@@ -72,7 +73,7 @@ class MockableContainer extends Container
     /**
      * @param string $id
      *
-     * @return boolean
+     * @return bool
      */
     public function hasMock($id)
     {

@@ -1,14 +1,18 @@
 {
-    "name": "intaro/symfony-testing-tools",
-    "description": "Symfony testing tools",
-    "keywords": ["symfony", "symfony2", "testing", "phpunit"],
+    "name": "neur0toxine/symfony-testing-tools",
+    "description": "Symfony testing tools from intaro/symfony-testing-tools",
+    "keywords": ["symfony", "symfony3", "testing", "phpunit"],
     "type": "library",
     "license": "MIT",
     "require": {
-        "php": ">=5.4.4",
-        "symfony/framework-bundle" : "~2.1",
-        "doctrine/data-fixtures": "~1.0",
-        "phpunit/phpunit": "~4.2"
+        "php": ">=7.1",
+        "ext-json": "*",
+        "symfony/framework-bundle" : "^3.4|^4.0",
+        "symfony/yaml": "^3.4|^4.0",
+        "symfony/dom-crawler": "^3.4|^4.0",
+        "doctrine/orm": "^2.5",
+        "doctrine/data-fixtures": "1.*",
+        "phpunit/phpunit": "8.*"
     },
     "autoload": {
         "psr-4": {
