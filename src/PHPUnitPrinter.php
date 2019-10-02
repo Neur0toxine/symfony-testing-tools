@@ -2,10 +2,10 @@
 
 namespace Intaro\SymfonyTestingTools;
 
-use PHPUnit\Framework\TestFailure;
-use PHPUnit\TextUI\ResultPrinter;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\Test;
+use PHPUnit\Framework\TestFailure;
+use PHPUnit\TextUI\ResultPrinter;
 use Symfony\Component\Yaml\Yaml;
 
 if (WebTestCase::isTestsDebug()) {
@@ -18,9 +18,9 @@ if (WebTestCase::isTestsDebug()) {
         /**
          * An error occurred.
          *
-         * @param Test $test
-         * @param Exception              $e
-         * @param float                   $time
+         * @param Test      $test
+         * @param Exception $e
+         * @param float     $time
          */
         public function addError(Test $test, Exception $e, $time)
         {
@@ -29,7 +29,7 @@ if (WebTestCase::isTestsDebug()) {
             $message = explode("\n", TestFailure::exceptionToString($e));
 
             $diagnostic = array(
-                'message'  => $message[0],
+                'message' => $message[0],
                 'severity' => 'fail'
             );
 

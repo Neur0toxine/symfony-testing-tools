@@ -2,16 +2,16 @@
 
 namespace Intaro\SymfonyTestingTools;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
+use Doctrine\Common\DataFixtures\Loader;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Client;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Common\DataFixtures\AbstractFixture;
-use Doctrine\Common\DataFixtures\Purger\ORMPurger;
-use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
-use Doctrine\Common\DataFixtures\Loader;
 
 abstract class WebTestCase extends BaseWebTestCase
 {
@@ -61,8 +61,9 @@ abstract class WebTestCase extends BaseWebTestCase
     /**
      * Append a certain fixture
      *
-     * @param  AbstractFixture $fixture
-     * @param  array           $options (default: [])
+     * @param AbstractFixture $fixture
+     * @param array           $options (default: [])
+     *
      * @return void
      */
     protected static function appendFixture(AbstractFixture $fixture, array $options = [])
@@ -75,7 +76,7 @@ abstract class WebTestCase extends BaseWebTestCase
         $loader->addFixture($fixture);
 
         if (isset($options['purge']) && $options['purge']) {
-            $purger   = new ORMPurger($em);
+            $purger = new ORMPurger($em);
             $executor = new ORMExecutor($em, $purger);
             $executor->execute($loader->getFixtures(), false);
         } else {
@@ -194,7 +195,7 @@ abstract class WebTestCase extends BaseWebTestCase
                     }
                 }
 
-                $title = '[' . $response->getStatusCode() . ']' . $add .' - ' . $content;
+                $title = '[' . $response->getStatusCode() . ']' . $add . ' - ' . $content;
             } else {
                 $title = $crawler->filter('title')->text();
             }
@@ -210,7 +211,8 @@ abstract class WebTestCase extends BaseWebTestCase
         $func = null,
         $message = null,
         $type = 'text/html'
-    ) {
+    )
+    {
         if (null === $func) {
             $func = 'isOk';
         }

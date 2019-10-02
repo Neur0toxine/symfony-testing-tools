@@ -45,8 +45,8 @@ class MockableContainer extends Container
     }
 
     /**
-     * @param string  $id
-     * @param int     $invalidBehavior
+     * @param string $id
+     * @param int    $invalidBehavior
      *
      * @return object
      * @throws \Exception

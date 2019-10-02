@@ -6,7 +6,7 @@
  *
  * @author  Sebastian Bergmann <sebastian@phpunit.de>
  * @license https://github.com/sebastianbergmann/phpunit/blob/53e84c64ad/LICENSE
- * @link https://github.com/sebastianbergmann/phpunit/issues/2683#issuecomment-302125951
+ * @link    https://github.com/sebastianbergmann/phpunit/issues/2683#issuecomment-302125951
  */
 
 namespace Intaro\SymfonyTestingTools;
@@ -23,11 +23,11 @@ namespace Intaro\SymfonyTestingTools;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestFailure;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\Warning;
-use PHPUnit\Framework\Test;
 use PHPUnit\Runner\TestHook;
 use PHPUnit\Util\Printer;
 use Symfony\Component\Yaml\Yaml;
@@ -74,9 +74,9 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * An error occurred.
          *
-         * @param Test $test
-         * @param Exception              $e
-         * @param float                  $time
+         * @param Test      $test
+         * @param Exception $e
+         * @param float     $time
          */
         public function addError(Test $test, Exception $e, $time)
         {
@@ -86,9 +86,9 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * A warning occurred.
          *
-         * @param Test    $test
+         * @param Test                       $test
          * @param \PHPUnit\Framework\Warning $e
-         * @param float                     $time
+         * @param float                      $time
          *
          * @since Method available since Release 5.1.0
          */
@@ -102,7 +102,7 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
          *
          * @param Test                 $test
          * @param AssertionFailedError $e
-         * @param float                                  $time
+         * @param float                $time
          */
         public function addFailure(Test $test, AssertionFailedError $e, $time)
         {
@@ -140,9 +140,9 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * Incomplete test.
          *
-         * @param Test $test
-         * @param Exception              $e
-         * @param float                  $time
+         * @param Test      $test
+         * @param Exception $e
+         * @param float     $time
          */
         public function addIncompleteTest(Test $test, Exception $e, $time)
         {
@@ -152,9 +152,9 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * Risky test.
          *
-         * @param Test $test
-         * @param Exception              $e
-         * @param float                  $time
+         * @param Test      $test
+         * @param Exception $e
+         * @param float     $time
          *
          * @since Method available since Release 4.0.0
          */
@@ -174,9 +174,9 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * Skipped test.
          *
-         * @param Test $test
-         * @param Exception              $e
-         * @param float                  $time
+         * @param Test      $test
+         * @param Exception $e
+         * @param float     $time
          *
          * @since Method available since Release 3.0.0
          */
@@ -231,8 +231,8 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * A test ended.
          *
-         * @param Test $test
-         * @param float                  $time
+         * @param Test  $test
+         * @param float $time
          */
         public function endTest(Test $test, $time)
         {
@@ -250,9 +250,9 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         }
 
         /**
-         * @param Test                   $test
-         * @param string                 $prefix
-         * @param string                 $directive
+         * @param Test   $test
+         * @param string $prefix
+         * @param string $directive
          */
         protected function writeNotOk(Test $test, $prefix = '', $directive = '')
         {
