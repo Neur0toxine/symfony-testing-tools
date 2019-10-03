@@ -21,14 +21,13 @@ namespace Intaro\SymfonyTestingTools;
     */
 
 use PHPUnit\Framework\AssertionFailedError;
-use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestFailure;
+use PHPUnit\Framework\TestListener;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\Warning;
-use PHPUnit\Runner\TestHook;
 use PHPUnit\Util\Printer;
 use Symfony\Component\Yaml\Yaml;
 
@@ -39,7 +38,7 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
      *
      * @since Class available since Release 3.0.0
      */
-    class PHPUnit_Util_Log_TAP extends Printer implements TestHook
+    class PHPUnit_Util_Log_TAP extends Printer implements TestListener
     {
         /**
          * @var int
@@ -74,11 +73,11 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * An error occurred.
          *
-         * @param Test      $test
-         * @param Exception $e
-         * @param float     $time
+         * @param Test       $test
+         * @param \Exception $e
+         * @param float      $time
          */
-        public function addError(Test $test, Exception $e, $time)
+        public function addError(Test $test, \Exception $e, $time)
         {
             $this->writeNotOk($test, 'Error');
         }
@@ -140,11 +139,11 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * Incomplete test.
          *
-         * @param Test      $test
-         * @param Exception $e
-         * @param float     $time
+         * @param Test       $test
+         * @param \Exception $e
+         * @param float      $time
          */
-        public function addIncompleteTest(Test $test, Exception $e, $time)
+        public function addIncompleteTest(Test $test, \Exception $e, $time)
         {
             $this->writeNotOk($test, '', 'TODO Incomplete Test');
         }
@@ -152,13 +151,13 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * Risky test.
          *
-         * @param Test      $test
-         * @param Exception $e
-         * @param float     $time
+         * @param Test       $test
+         * @param \Exception $e
+         * @param float      $time
          *
          * @since Method available since Release 4.0.0
          */
-        public function addRiskyTest(Test $test, Exception $e, $time)
+        public function addRiskyTest(Test $test, \Exception $e, $time)
         {
             $this->write(
                 sprintf(
@@ -174,13 +173,13 @@ if (!class_exists('PHPUnit_Util_Log_TAP')) {
         /**
          * Skipped test.
          *
-         * @param Test      $test
-         * @param Exception $e
-         * @param float     $time
+         * @param Test       $test
+         * @param \Exception $e
+         * @param float      $time
          *
          * @since Method available since Release 3.0.0
          */
-        public function addSkippedTest(Test $test, Exception $e, $time)
+        public function addSkippedTest(Test $test, \Exception $e, $time)
         {
             $this->write(
                 sprintf(

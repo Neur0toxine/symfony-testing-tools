@@ -2,7 +2,6 @@
 
 namespace Intaro\SymfonyTestingTools;
 
-use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestFailure;
 use PHPUnit\TextUI\ResultPrinter;
@@ -18,11 +17,11 @@ if (WebTestCase::isTestsDebug()) {
         /**
          * An error occurred.
          *
-         * @param Test      $test
-         * @param Exception $e
-         * @param float     $time
+         * @param Test       $test
+         * @param \Exception $e
+         * @param float      $time
          */
-        public function addError(Test $test, Exception $e, $time)
+        public function addError(Test $test, \Exception $e, $time)
         {
             $this->writeNotOk($test, 'Error');
 
